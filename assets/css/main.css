@@ -178,6 +178,7 @@ input, select, textarea {
 	p {
 		text-align: justify;
 		margin: 0 0 2rem 0;
+		font-size: 12px;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -2161,6 +2162,7 @@ input, select, textarea {
 			height: 3.5rem;
 			line-height: 3.5rem;
 			padding: 0 2.75rem;
+			margin-bottom: 1rem;
 		}
 
 		@media screen and (max-width: 980px) {
@@ -2634,8 +2636,9 @@ input, select, textarea {
 
 		.image.main {
 			display: block;
-			margin: 4rem 0;
-			width: 100%;
+			margin: 1rem auto 1rem auto;
+			width: 80%;
+
 		}
 
 			.image.main:first-child {
@@ -2960,7 +2963,7 @@ input, select, textarea {
 
 			header.major > .date {
 				font-size: 1rem;
-				margin: 0 0 4rem 0;
+				margin: 0 0 1rem 0;
 			}
 
 				header.major > .date:before, header.major > .date:after {
@@ -4687,3 +4690,7 @@ input, select, textarea {
 		}
 
 	}
+
+header.major {
+	margin-bottom: 1rem ;
+}
