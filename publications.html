@@ -23,6 +23,8 @@
     <div id="intro">
         <span class="logo">Biagio Boi</span>
         <p>PhD Student, Univeristy of Salerno</p>
+        <a href="https://orcid.org/0000-0003-3044-5345"><span style="top: 0"><img src="images/orcid.png" alt="orcid"
+                                                                                  style="width: 14px;"/> (0000-0003-3044-5345)</span></a>
     </div>
 
 
@@ -140,7 +142,8 @@
             <article class="post featured" category="conference" post-id="C3" tags="identity">
                 <header class="major">
                     <span class="date">August 7, 2023</span>
-                    <h3><a href="https://dl.acm.org/doi/abs/10.1145/3599957.3606213">[C3] Using Knowledge Graphs to ensure
+                    <h3><a href="https://dl.acm.org/doi/abs/10.1145/3599957.3606213">[C3] Using Knowledge Graphs to
+                        ensure
                         Privacy Policies in decentralized data collection
                         systems</a></h3>
                     <h6> 2023 International Conference on Research in Adaptive and Convergent Systems - RACS 2023</h6>
@@ -195,7 +198,8 @@
             <article class="post featured" category="conference" post-id="C1" tags="identity">
                 <header class="major">
                     <span class="date">July 3, 2023</span>
-                    <h3><a href="https://link.springer.com/chapter/10.1007/978-3-031-37120-2_10">[C1] A Decentralized Smart
+                    <h3><a href="https://link.springer.com/chapter/10.1007/978-3-031-37120-2_10">[C1] A Decentralized
+                        Smart
                         City Using Solid and Self-Sovereign Identity</a></h3>
                     <h6> Computational Science and Its Applications – ICCSA 2023 Workshops</h6>
                     <p class="abstract_paper">In the Internet of Things (IoT) context, a considerable quantity of data
@@ -300,12 +304,12 @@
     document.papers = []
 
     $(window).on('load', function () {
-       $("article").each(function () {
-           document.papers.push({
-               id: $(this).attr("post-id"),
-               category: $(this).attr("category"),
-               tags: $(this).attr("tags").split(",")
-           })
+        $("article").each(function () {
+            document.papers.push({
+                id: $(this).attr("post-id"),
+                category: $(this).attr("category"),
+                tags: $(this).attr("tags").split(",")
+            })
         })
     })
 
