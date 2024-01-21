@@ -19,12 +19,16 @@
 <!-- Wrapper -->
 <div id="wrapper">
 
-    <!-- Header -->
-    <header id="header" style="padding: 10px; margin-bottom: 50px;">
+    <!-- Intro -->
+    <div id="intro">
+        <span class="logo">Biagio Boi</span>
+        <p>PhD Student, Univeristy of Salerno</p>
+    </div>
 
-        <h1>Biagio Boi</h1>
-        <p>PhD Student - Univeristy of Salerno</p>
-        <p>IoT, Security, Networking </p>
+
+    <!-- Header -->
+    <header id="header">
+        <!-- <a href="index.html" class="logo">Biagio Boi</a> -->
     </header>
 
     <!-- Nav -->
@@ -48,14 +52,29 @@
 
     <!-- Main -->
     <div id="main">
-
-        <header class="major">
-            <h1>Publications</h1>
-            <p>Here is a list of my works.</p>
-        </header>
         <!-- Post -->
+        <div class="row gtr-uniform">
+            <div class="col-6 col-12-xsmall">
+                <label for="category-paper">Category</label>
+                <select id="category-paper">
+                    <option value="all">ALL</option>
+                    <option value="conference">CONFERENCE</option>
+                    <option value="journal">JOURNAL</option>
+                </select>
+            </div>
+            <div class="col-6 col-12-xsmall">
+                <label for="category-paper">Tag</label>
+                <select id="tag-paper">
+                    <option value="all">ALL</option>
+                    <option value="blockchain">BLOCKCHAIN</option>
+                    <option value="automotive">AUTOMOTIVE</option>
+                    <option value="swipt">SWIPT</option>
+                </select>
+            </div>
+        </div>
+
         <section class="post" style="border-top: 0;">
-            <article class="post featured">
+            <article class="post featured" category="" tags="swipt, iot" post-id="U1">
                 <header class="major">
                     <span class="date">December 7, 2023</span>
                     <h3><a href="https://doi.org/10.48550/arXiv.2312.08232">Green Operations of SWIPT Networks: The Role
@@ -84,10 +103,10 @@
                     </li>
                 </ul>
             </article>
-            <article class="post featured">
+            <article class="post featured" category="journal" tags="automotive" post-id="J1">
                 <header class="major">
                     <span class="date">December 4, 2023</span>
-                    <h3><a href="https://doi.org/10.3390/vehicles5040096">Strengthening Automotive
+                    <h3><a href="https://doi.org/10.3390/vehicles5040096">[J1] Strengthening Automotive
                         Cybersecurity: A Comparative Analysis of ISO/SAE 21434-Compliant Automatic Collision
                         Notification (ACN) Systems</a></h3>
                     <h6> Vehicles 2023</h6>
@@ -118,10 +137,10 @@
                     </li>
                 </ul>
             </article>
-            <article class="post featured">
+            <article class="post featured" category="conference" post-id="C3" tags="identity">
                 <header class="major">
                     <span class="date">August 7, 2023</span>
-                    <h3><a href="https://dl.acm.org/doi/abs/10.1145/3599957.3606213">Using Knowledge Graphs to ensure
+                    <h3><a href="https://dl.acm.org/doi/abs/10.1145/3599957.3606213">[C3] Using Knowledge Graphs to ensure
                         Privacy Policies in decentralized data collection
                         systems</a></h3>
                     <h6> 2023 International Conference on Research in Adaptive and Convergent Systems - RACS 2023</h6>
@@ -144,13 +163,14 @@
                 </ul>
             </article>
 
-            <article class="post featured">
+            <article class="post featured" category="conference" post-id="C2" tags="identity">
                 <header class="major">
                     <span class="date">July 10, 2023</span>
-                    <h3><a href="https://www.scitepress.org/Link.aspx?doi=10.5220/0012121400003555">Self-Sovereign
+                    <h3><a href="https://www.scitepress.org/Link.aspx?doi=10.5220/0012121400003555">[C2] Self-Sovereign
                         Identity (SSI) Attribute-Based Web Authentication</a></h3>
                     <h6> 20th International Conference on Security and Cryptography - SECRYPT 2023</h6>
-                    <p class="abstract_paper">Web authentication is primarily based on password usage, representing the
+                    <p class="abstract_paper">
+                        Web authentication is primarily based on password usage, representing the
                         weakest link in the entire security chain. The number of services offered over the web is
                         continuously increasing, and with them also the number of required passwords that users need to
                         create and securely store. Despite various standards for password-less or multi-factor
@@ -165,7 +185,6 @@
                         attribute-based authentication and authorization for the web able to cope with the recent legal
                         obligations in terms of privacy.</p>
                 </header>
-                <a href="#" class="image main"><img src="images/secrypt_2023.jpeg" alt=""/></a>
                 <ul class="actions special">
                     <li><a href="https://www.scitepress.org/Link.aspx?doi=10.5220/0012121400003555"
                            class="button large">Full Paper</a></li>
@@ -173,10 +192,10 @@
             </article>
 
 
-            <article class="post featured">
+            <article class="post featured" category="conference" post-id="C1" tags="identity">
                 <header class="major">
                     <span class="date">July 3, 2023</span>
-                    <h3><a href="https://link.springer.com/chapter/10.1007/978-3-031-37120-2_10">A Decentralized Smart
+                    <h3><a href="https://link.springer.com/chapter/10.1007/978-3-031-37120-2_10">[C1] A Decentralized Smart
                         City Using Solid and Self-Sovereign Identity</a></h3>
                     <h6> Computational Science and Its Applications – ICCSA 2023 Workshops</h6>
                     <p class="abstract_paper">In the Internet of Things (IoT) context, a considerable quantity of data
@@ -237,12 +256,8 @@
                     Fisciano, SA 84084</p>
             </section>
             <section>
-                <h3>Phone</h3>
-                <p><a href="#">(000) 000-0000</a></p>
-            </section>
-            <section>
                 <h3>Email</h3>
-                <p><a href="mailto:bboi@unisa.it">bboi@unisa.it</a></p>
+                <p>bboi(at)unisa(dot)it</p>
             </section>
             <section>
                 <h3>Social</h3>
@@ -263,8 +278,7 @@
     <!-- Copyright -->
     <div id="copyright">
         <ul>
-            <li>&copy; Biagio Boi</li>
-            <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+            <li>&copy; 2022-2024 Biagio Boi</li>
         </ul>
     </div>
 
@@ -278,6 +292,41 @@
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script>
+    /* Paper filter */
+    $('#category-paper').change(filter_by_cat);
+    $('#tag-paper').change(filter_by_tags);
+    document.papers = []
+
+    $(window).on('load', function () {
+       $("article").each(function () {
+           document.papers.push({
+               id: $(this).attr("post-id"),
+               category: $(this).attr("category"),
+               tags: $(this).attr("tags").split(",")
+           })
+        })
+    })
+
+    function filter_by_cat() {
+        let selected = $("#category-paper").find(":selected").val().toLowerCase()
+        if (selected === "all") $("article").fadeIn()
+        else {
+            $("article[category!='" + selected + "']").fadeOut()
+            $("article[category='" + selected + "']").fadeIn()
+        }
+    }
+
+    function filter_by_tags() {
+        let selected = $("#tag-paper").find(":selected").val().toLowerCase()
+        let filtered = document.papers.filter(e => e.tags.includes(selected))
+        $("article").css("display", "none")
+        filtered.forEach((e) => {
+            $("article[post-id='" + e.id + "']").fadeIn()
+        })
+    }
+</script>
 
 </body>
 </html>
