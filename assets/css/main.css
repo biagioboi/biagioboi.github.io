@@ -4752,3 +4752,20 @@ header.major {
 @keyframes p{
 	from{--p:0}
 }
+
+.container_food {
+	display: flex;
+	margin: auto;
+	margin-top:10px;
+	text-align: center;
+	position: center;
+	overflow: auto;
+}
+
+.img_food {
+	margin: 0px 10px;
+	height: 250px;
+}
+.img_food:first-child {
+	margin-left: 0px;
+}
