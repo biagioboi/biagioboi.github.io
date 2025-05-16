@@ -4753,19 +4753,169 @@ header.major {
 	from{--p:0}
 }
 
-.container_food {
+
+/* CSS migliorato per il carosello */
+
+/* Stile per layout immagine a destra */
+.food-section {
 	display: flex;
-	margin: auto;
-	margin-top:10px;
-	text-align: center;
-	position: center;
-	overflow: auto;
+	flex-direction: row;
+	margin-bottom: 2em;
+	align-items: flex-start;
+	gap: 2em;
 }
 
-.img_food {
-	margin: 0px 10px;
-	height: 250px;
+.food-section .content {
+	flex: 1;
 }
-.img_food:first-child {
-	margin-left: 0px;
+
+.food-carousel {
+	flex: 1;
+	position: relative;
+	width: 100%;
+	max-width: 450px;
+	height: 350px;
+	border-radius: 6px;
+	overflow: hidden;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.food-slides {
+	display: flex;
+	width: 500%;
+	height: 100%;
+	transition: transform 0.6s ease-in-out;
+}
+
+.food-slide {
+	width: 20%;
+	height: 100%;
+	position: relative;
+}
+
+.food-slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.food-slide-title {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 12px;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+	color: white;
+	text-align: center;
+}
+
+/* Controlli carosello */
+.carousel-nav {
+	position: absolute;
+	bottom: 15px;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	z-index: 2;
+}
+
+.carousel-indicator {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.5);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+	background-color: white;
+	transform: scale(1.3);
+}
+
+.carousel-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 40px;
+	height: 40px;
+	background-color: rgba(0, 0, 0, 0.3);
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	font-size: 1.5em;
+	border-radius: 50%;
+	z-index: 2;
+	transition: background-color 0.3s ease;
+}
+
+.carousel-arrow:hover {
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.carousel-arrow.prev {
+	left: 10px;
+}
+
+.carousel-arrow.next {
+	right: 10px;
+}
+
+/* Responsive */
+@media screen and (max-width: 736px) {
+	.food-section {
+		flex-direction: column;
+	}
+
+	.food-carousel {
+		max-width: 100%;
+		margin-top: 1.5em;
+	}
+}
+
+/* CSS per la didascalia accademica */
+.academic-figure {
+	position: relative;
+	float: left;
+	margin: 0 1.5em 1em 0;
+	max-width: 35%;
+}
+
+.academic-figure .image {
+	margin-bottom: 8px;
+	width: 100%;
+}
+
+.academic-figure img {
+	width: 100%;
+	display: block;
+}
+
+.figure-caption {
+	font-size: 0.85em;
+	line-height: 1.4;
+	color: #444;
+	text-align: left;
+	font-style: italic;
+	margin-top: 5px;
+	margin-bottom: 40px;
+}
+
+.figure-caption strong {
+	font-weight: 600;
+	font-style: normal;
+}
+
+article h3 {
+	clear: none;
+}
+
+.food-section .figure-caption {
+	margin-bottom: 10px;
+	margin-top: 20px;
 }

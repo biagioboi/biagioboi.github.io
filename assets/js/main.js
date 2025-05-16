@@ -257,3 +257,65 @@
 		}
 */
 })(jQuery);
+
+// JavaScript da aggiungere alla fine del tuo file main.js o in un nuovo script
+document.addEventListener('DOMContentLoaded', function() {
+	// Ottieni gli elementi del carosello
+	const slides = document.querySelector('.food-slides');
+	const indicators = document.querySelectorAll('.carousel-indicator');
+	const prevBtn = document.querySelector('.carousel-arrow.prev');
+	const nextBtn = document.querySelector('.carousel-arrow.next');
+
+	// Imposta lo stato iniziale
+	let currentSlide = 0;
+	const totalSlides = document.querySelectorAll('.food-slide').length;
+
+	// Funzione per aggiornare il carosello
+	function updateCarousel() {
+		// Aggiorna la posizione delle slide
+		slides.style.transform = `translateX(-${currentSlide * 20}%)`;
+
+		// Aggiorna gli indicatori
+		indicators.forEach((indicator, index) => {
+			indicator.classList.toggle('active', index === currentSlide);
+		});
+	}
+
+	// Ascoltatori di eventi per le frecce
+	prevBtn.addEventListener('click', function() {
+		currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+		updateCarousel();
+	});
+
+	nextBtn.addEventListener('click', function() {
+		currentSlide = (currentSlide + 1) % totalSlides;
+		updateCarousel();
+	});
+
+	// Ascoltatori di eventi per gli indicatori
+	indicators.forEach((indicator, index) => {
+		indicator.addEventListener('click', function() {
+			currentSlide = index;
+			updateCarousel();
+		});
+	});
+
+	// Avvio rotazione automatica (opzionale)
+	let interval = setInterval(function() {
+		currentSlide = (currentSlide + 1) % totalSlides;
+		updateCarousel();
+	}, 5000); // cambia slide ogni 5 secondi
+
+	// Ferma la rotazione automatica quando il mouse è sopra il carosello
+	document.querySelector('.food-carousel').addEventListener('mouseenter', function() {
+		clearInterval(interval);
+	});
+
+	// Riprendi la rotazione automatica quando il mouse lascia il carosello
+	document.querySelector('.food-carousel').addEventListener('mouseleave', function() {
+		interval = setInterval(function() {
+			currentSlide = (currentSlide + 1) % totalSlides;
+			updateCarousel();
+		}, 5000);
+	});
+});
