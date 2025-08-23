@@ -320,58 +320,82 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+    /* ===== Helpers ===== */
+    function formatMonthShort(d, lang) {
+    const s = d.toLocaleString(lang, { month: 'short' });
+    return s.charAt(0).toUpperCase() + s.slice(1);
+}
+    function formatDateLabel(iso) {
+    const lang = document.documentElement.lang || 'en';
+    const d = new Date(iso + "T00:00:00");
+    const dd = String(d.getDate()).padStart(2,'0');
+    const mon = formatMonthShort(d, lang);
+    const yy = String(d.getFullYear()).slice(-2);
+    return `${dd} ${mon} ${yy}`;
+}
+    function formatTitle(n) {
+    return `[${n.type}] ${n.title} — ${n.venue}`;
+}
 
-fetch('/assets/news.json')
-    .then(r => r.json())
-    .then(data => {
-        window.BB_NEWS = data;
-    })
-    .catch(() => {
-        window.BB_NEWS = [];
-    })
-    .finally(() => {
-        /* ===== Rotazione con transizione ===== */
+    /* ===== Fetch + render ===== */
+    (async () => {
+    const url = '/assets/news.json'; // assoluto dalla root del sito
+    let data = [];
 
-        const items = [...BB_NEWS].sort((a, b) => new Date(b.date) - new Date(a.date));
-        if (!items.length) return;
+    try {
+    const r = await fetch(url, {
+    headers: { 'Accept': 'application/json' }
+    // se vuoi evitare cache aggressiva di GitHub Pages:
+    //, cache: 'no-store'
+});
+    if (!r.ok) throw new Error(`HTTP ${r.status} on ${url}`);
+    const json = await r.json();        // <-- ritorna davvero il JSON
+    if (!Array.isArray(json)) throw new Error('JSON non è un array');
+    data = json;
+} catch (err) {
+    console.error('News fetch failed:', err);
+    data = [];
+}
 
-        const linkEl = document.getElementById('bb-news-link');
-        const textEl = document.getElementById('bb-news-text');
-        const dateEl = document.getElementById('bb-news-date');
+    window.BB_NEWS = data; // opzionale, se vuoi leggerlo altrove
 
-        // wrapper per animazioni
-        linkEl.classList.add('bb-anim');
+    /* ===== Rotazione con transizione ===== */
+    const items = Array.isArray(data) ? [...data].sort((a,b)=> new Date(b.date) - new Date(a.date)) : [];
+    if (!items.length) return;
 
-        let i = 0;
+    const linkEl = document.getElementById('bb-news-link');
+    const textEl = document.getElementById('bb-news-text');
+    const dateEl = document.getElementById('bb-news-date');
+    if (!linkEl || !textEl || !dateEl) {
+    console.warn('Elementi del banner non trovati nel DOM.');
+    return;
+}
 
-        function setContent(idx) {
-            const n = items[idx];
-            linkEl.href = n.url || "#";
-            textEl.textContent = formatTitle(n);
-            dateEl.textContent = formatDateLabel(n.date);
-        }
+    linkEl.classList.add('bb-anim');
 
-        // primo render
-        setContent(i);
+    let i = 0;
+    function setContent(idx) {
+    const n = items[idx];
+    linkEl.href = n.url || "#";
+    textEl.textContent = formatTitle(n);
+    dateEl.textContent = formatDateLabel(n.date);
+}
 
-        // cambio con fade/slide
-        const INTERVAL_MS = 6000;
-        setInterval(() => {
-            linkEl.classList.add('is-out');
-            // attendi la fine della transizione (o 350ms fallback), poi aggiorna e torna visibile
-            const done = () => {
-                linkEl.removeEventListener('transitionend', done);
-                i = (i + 1) % items.length;
-                setContent(i);
-                // prossimo frame per riattivare transizione verso visibile
-                requestAnimationFrame(() => linkEl.classList.remove('is-out'));
-            };
-            linkEl.addEventListener('transitionend', done, {once: true});
-            // fallback in caso l'evento non scatti
-            setTimeout(done, 380);
-        }, INTERVAL_MS);
-    });
+    setContent(i);
 
+    const INTERVAL_MS = 6000;
+    setInterval(() => {
+    linkEl.classList.add('is-out');
+    const done = () => {
+    linkEl.removeEventListener('transitionend', done);
+    i = (i + 1) % items.length;
+    setContent(i);
+    requestAnimationFrame(() => linkEl.classList.remove('is-out'));
+};
+    linkEl.addEventListener('transitionend', done, { once: true });
+    setTimeout(done, 380); // fallback
+}, INTERVAL_MS);
+})();
 
 /* ===== Helpers ===== */
 function formatMonthShort(d, lang) {
