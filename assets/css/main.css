@@ -4919,3 +4919,51 @@ article h3 {
 	margin-bottom: 10px;
 	margin-top: 20px;
 }
+
+ :root {
+	 --bb-bg: #ffffff;
+	 --bb-text: #111111;
+	 --bb-muted: #555555;
+	 --bb-border: #e6e6e6;
+	 --bb-shadow: rgba(0,0,0,0.06);
+ }
+.bb-news {
+	position: sticky; top: 0; z-index: 1000;
+	width: 100%;
+	background: var(--bb-bg);
+	color: var(--bb-text);
+	border-bottom: 1px solid var(--bb-border);
+	box-shadow: 0 4px 12px var(--bb-shadow);
+	font: 500 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.bb-news__inner {
+	max-width: 980px; margin: 0 auto; padding: 10px 16px;
+	display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center;
+}
+.bb-news__label {
+	font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--bb-muted);
+}
+.bb-news__item {
+	display: inline-flex; gap: 10px; align-items: baseline; min-width: 0;
+	color: inherit; text-decoration: none; border-bottom: 1px dotted var(--bb-border);
+}
+.bb-news__item:hover { text-decoration: underline; }
+.bb-news__text, .bb-news__date {
+	white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.bb-news__date { color: var(--bb-muted); font-weight: 450; }
+
+/* Animazione: fade + slide su cambio news */
+.bb-anim {
+	opacity: 1; transform: translateY(0); transition: opacity .35s ease, transform .35s ease;
+}
+.bb-anim.is-out {
+	opacity: 0; transform: translateY(4px);
+}
+@media (prefers-reduced-motion: reduce) {
+	.bb-anim, .bb-anim.is-out { transition: none; transform: none; opacity: 1; }
+}
+@media (max-width: 520px) {
+	.bb-news__label { display: none; }
+	.bb-news__date { display: none; } /* su schermi piccoli teniamo solo il testo */
+}
