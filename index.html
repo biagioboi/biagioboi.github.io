@@ -13,6 +13,44 @@
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css"/>
     </noscript>
+    <style>
+        /* --- Lightweight styles for the Ongoing Research cards (theme-friendly) --- */
+        .ongoing {
+            margin: 3rem 0 1rem;
+        }
+        .ongoing h3 {
+            margin-bottom: 1rem;
+        }
+        .ongoing .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+        .ongoing .card {
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            padding: 1.2rem;
+            background: rgba(255,255,255,0.02);
+        }
+        .ongoing .card h4 {
+            margin: 0 0 .5rem 0;
+        }
+        .ongoing .meta {
+            font-size: 0.85rem;
+            opacity: .8;
+            margin-bottom: .4rem;
+        }
+        .ongoing a.button.small {
+            margin-top: .6rem;
+        }
+
+        /* responsive */
+        @media (min-width: 800px) {
+            .ongoing .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
 </head>
 <body class="is-preload">
 
@@ -66,6 +104,7 @@
             </div>
         </div>
 
+
         <article>
             <div class="academic-figure">
                 <span class="image"><img src="images/DSC09335.jpg" alt="Biagio Boi presenting research"/></span>
@@ -82,6 +121,38 @@
             which include
             networking, security and IoT.
         </article>
+
+        <!-- Ongoing Research -->
+        <article id="ongoing-research" class="ongoing">
+            <h3>Selected Research</h3>
+            <p class="meta">A quick snapshot of what I’m working on right now. For details, see the <a href="research.html">Research</a> page.</p>
+            <div class="grid">
+                <section class="card">
+                    <h4>SWIPT &amp; Energy Harvesting</h4>
+                    <p>
+                        Optimization of energy efficiency in SWIPT networks, with joint focus on BS density and user distribution.
+                    </p>
+                    <a href="swipt.html" class="button small">Read more</a>
+                </section>
+                <section class="card">
+                    <h4>Decentralized Identity (DID/SSI)</h4>
+                    <p>
+                        Design of privacy-preserving authentication for traditional and IoT systems, looking at scalability, security
+                        and interoperability using frameworks like Credo.ts and KERI.
+                    </p>
+                    <a href="research.html" class="button small">Read more</a>
+                </section>
+                <section class="card">
+                    <h4>Smart Contract Security</h4>
+                    <p>
+                        Vulnerability assessment across multiple blockchains (e.g., Ethereum, Algorand, Solana), combining
+                        ML-based detection with an interest in formal verification for robust guarantees.
+                    </p>
+                    <a href="research.html" class="button small">Read more</a>
+                </section>
+            </div>
+        </article>
+
         <article>
             <div class="food-section">
                 <div class="content">
